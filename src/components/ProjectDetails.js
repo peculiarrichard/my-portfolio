@@ -1,12 +1,26 @@
 import React from "react";
 import { Repo } from "../Style";
 import { DataContext } from "./Context";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProjectDetails = () => {
+  const [currentRepo, setCurrentRepo] = useState([]);
+  const params = useParams();
+
   const value = useContext(DataContext);
   const [repos] = value.repo;
+
+  useEffect(() => {
+    const res = repos.find((repo) => {
+      if (repo.name === params.repoName) {
+        setCurrentRepo(repo);
+      }
+    });
+    return res;
+  }, [repos, params.repoName]);
   return (
     <>
       <Helmet>
@@ -17,25 +31,34 @@ const ProjectDetails = () => {
         <link rel="canonical" href="/portfolio/projectdetails"></link>
       </Helmet>
       <div>
-        {repos.map((item) => (
+        {currentRepo ? (
           <Repo>
-            <div key={item.id} className="repolist">
-              <h2>Project name: {item.name}</h2>
-              <p>{item.description}</p>
+            <div key={currentRepo.id} className="repolist">
+              <h2>Project name: {currentRepo.name}</h2>
+              <p>{currentRepo.description}</p>
               <div>
-                <a href={item.svn_url} target="_blank" rel="noreferrer">
+                <a href={currentRepo.svn_url} target="_blank" rel="noreferrer">
                   <button>source code</button>
                 </a>
-                <a
-                  href={`https://${item.homepage}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  <button>view site</button>
-                </a>
+                {currentRepo.homepage !== "" ? (
+                  <a
+                    href={`https://${currentRepo.homepage}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    <button>view site</button>
+                  </a>
+                ) : (
+                  <div></div>
+                )}
               </div>
             </div>
           </Repo>
-        ))}
+        ) : (
+          "loading..."
+        )}
+        <Link to = "/portfolio" className="btn">
+              <button >back</button>
+        </Link>
       </div>
     </>
   );

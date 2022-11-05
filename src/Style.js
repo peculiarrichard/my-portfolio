@@ -215,6 +215,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+margin-bottom: 6rem;
 
 .title{
     font-size: 1rem;
@@ -400,18 +401,20 @@ export const Project = styled.div`
 `;
 
 export const Repo = styled.div`
-  display: grid;
-  grid-template-column: auto;
-  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
   margin: auto;
-  height: 15rem;
-  margin-top: 1rem;
+  height: 100%;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
+  
+
   @media (max-width: 480px) {
     width: 19rem;
-    height: 17rem;
+    height: 100%;
   }
 
   .repolist {
@@ -475,7 +478,11 @@ export const FooterContainer = styled.footer`
   background: #949494;
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: auto;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
   justify-content: space-around;
 
   @media (min-width: 510px) and (max-width: 1024px) {

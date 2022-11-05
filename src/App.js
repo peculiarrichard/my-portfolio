@@ -44,7 +44,7 @@ const App = () => {
           <Route path="home" element={<Home />} />
           <Route path="portfolio" element={<Portfolio></Portfolio>}></Route>
           <Route
-            path="portfolio/projectdetails"
+            path="portfolio/:repoName"
             element={<ProjectDetails></ProjectDetails>}></Route>
           <Route path="about" element={<About></About>}></Route>
           <Route path="blog" element={<Blog></Blog>}></Route>

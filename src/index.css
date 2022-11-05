@@ -22,12 +22,29 @@ body{
   color: gray;
   text-align: center;
 }
+.btn{
+  text-decoration: none;
+}
+.btn > button{
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 50px;
+  width: 3rem;
+  border: 1px solid black;
+  cursor:pointer;
+  margin: auto;
+  display:flex;
+  
+}
+.btn>button:hover{
+  background: yellow;
+}
 
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 7rem;
 }
 
 .paginationItem {

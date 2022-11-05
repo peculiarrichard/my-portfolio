@@ -8,8 +8,9 @@ const Projects = (props) => {
     <Project>
         <h2>{props.data.name}</h2>
         <p>Major tools used: {props.data.language}</p>
-        <Link to ='./projectdetails'>
-            <button>View all projects</button>
+        
+        <Link key={props.data.id} to ={props.data.name}>
+            <button>see more details</button>
         </Link>
         <Outlet/>
      </Project> 
